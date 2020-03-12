@@ -465,3 +465,16 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# XiaomiParts
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
+# GCam Go
+PRODUCT_PACKAGES += \
+    GCam
+
+# Youtube by Vanced Team
+PRODUCT_PACKAGES += \
+    Youtube
+
