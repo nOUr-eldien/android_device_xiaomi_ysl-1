@@ -34,7 +34,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String PREF_PRESET = "dirac_preset_pref";
 
     public static final String PREF_VIBRATION_STRENGTH = "vibration_strength";
-    public static final String VIBRATION_STRENGTH_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+    public static final String VIBRATION_STRENGTH_PATH = "/sys/class/leds/vibrator/vmax_mv_user";
 
     public static final String PREF_KEY_FPS_INFO = "fps_info";
 
@@ -42,10 +42,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final int MIN_VIBRATION = 116;
     public static final int MAX_VIBRATION = 3596;
 
-    public static final  String PREF_HEADPHONE_GAIN = "headphone_gain";
-    public static final  String PREF_MICROPHONE_GAIN = "microphone_gain";
-    public static final  String HEADPHONE_GAIN_PATH = "/sys/kernel/sound_control/headphone_gain";
-    public static final  String MICROPHONE_GAIN_PATH = "/sys/kernel/sound_control/mic_gain";
     public static final  String PREF_BACKLIGHT_DIMMER = "backlight_dimmer";
     public static final  String BACKLIGHT_DIMMER_PATH = "/sys/module/mdss_fb/parameters/backlight_dimmer";
 	public static final String CATEGORY_FASTCHARGE = "usb_fastcharge";
@@ -69,12 +65,6 @@ public class DeviceSettings extends PreferenceFragment implements
         VibrationSeekBarPreference vibrationStrength = (VibrationSeekBarPreference) findPreference(PREF_VIBRATION_STRENGTH);
         vibrationStrength.setEnabled(FileUtils.fileWritable(VIBRATION_STRENGTH_PATH));
         vibrationStrength.setOnPreferenceChangeListener(this);
-
-        CustomSeekBarPreference headphone_gain = (CustomSeekBarPreference) findPreference(PREF_HEADPHONE_GAIN);
-        headphone_gain.setOnPreferenceChangeListener(this);
-
-        CustomSeekBarPreference microphone_gain = (CustomSeekBarPreference) findPreference(PREF_MICROPHONE_GAIN);
-        microphone_gain.setOnPreferenceChangeListener(this);
 
         //CustomSeekBarPreference torch_brightness = (CustomSeekBarPreference) findPreference(PREF_TORCH_BRIGHTNESS);
         //torch_brightness.setEnabled(FileUtils.fileWritable(TORCH_1_BRIGHTNESS_PATH) &&
@@ -151,14 +141,6 @@ public class DeviceSettings extends PreferenceFragment implements
             case PREF_VIBRATION_STRENGTH:
                 double vibrationValue = (int) value / 100.0 * (MAX_VIBRATION - MIN_VIBRATION) + MIN_VIBRATION;
                 FileUtils.setValue(VIBRATION_STRENGTH_PATH, vibrationValue);
-                break;
-
-            case PREF_HEADPHONE_GAIN:
-                FileUtils.setValue(HEADPHONE_GAIN_PATH, value + " " + value);
-                break;
-
-            case PREF_MICROPHONE_GAIN:
-                FileUtils.setValue(MICROPHONE_GAIN_PATH, (int) value);
                 break;
 
             case PREF_ENABLE_DIRAC:
