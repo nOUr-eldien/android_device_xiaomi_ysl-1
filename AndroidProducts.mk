@@ -17,6 +17,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/ssos_ysl.mk
 
 COMMON_LUNCH_CHOICES := \
-    ssos_ysl-user \
-    ssos_ysl-userdebug \
-    ssos_ysl-eng
+    lineage_ysl-user \
+    lineage_ysl-userdebug \
+    lineage_ysl-eng
