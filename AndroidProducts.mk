@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/ssos_ysl.mk
+    $(LOCAL_DIR)/bootleg_ysl.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_ysl-user \
-    lineage_ysl-userdebug \
-    lineage_ysl-eng
+    bootleg_ysl-user \
+    bootleg_ysl-userdebug \
+    bootleg_ysl-eng
